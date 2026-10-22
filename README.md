@@ -1,73 +1,67 @@
 # WhatIfIPO.in
 
 > **What if you had invested in that IPO?**  
-> A calculator that shows users what would have happened to their money if they had invested in any Indian IPO.
+> An interactive investment return simulator for Indian IPOs with **real-time live market pricing**, dynamic listing returns, and live upcoming exchange feeds.
 
-## 🚀 Tech Stack
+---
 
-- **React 18 + Vite** — Fast dev experience
-- **Tailwind CSS** — Utility-first styling
-- **Supabase** — Backend database for IPO data
-- **React Router v6** — Client-side routing
-- **Lucide React** — Icons
+## ⚡ Zero-Configuration & Standalone
+
+WhatIfIPO is **100% self-sufficient** and requires **zero external databases or API keys** to deploy.
+- **Zero environment variables required**
+- **Zero database maintenance**
+- **1-Click Deployment** on Vercel, Netlify, or any static host
+
+---
+
+## 🚀 Live Features
+
+1. **Live Real-Time Market Feed (`/api/live-price`)**
+   - Automatically fetches current live market prices and 52-week ranges directly from Indian market feeds (.NS / .BO) when a user searches or selects an IPO.
+
+2. **Live Upcoming & Active IPOs (`/api/upcoming-ipos`)**
+   - Synced with official NSE / BSE exchange subscription feeds.
+   - Shows active bidding statuses, live subscription demand multiples (e.g. 5.5x), and verified regulatory timelines.
+
+3. **199+ Historical Indian IPO Catalog (2002 – Present)**
+   - Master verified catalog of Indian Mainboard IPOs from 2002 (Bharti Airtel, Maruti, TCS) to recent debuts (Swiggy, Waaree Energies, Hyundai, Bajaj Housing Finance).
+
+4. **Instant Search Suggestions**
+   - Clicking or focusing on the search bar immediately displays popular household IPOs with past listing returns.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React 18 + Vite** — High-performance frontend
+- **Tailwind CSS** — Clean, responsive financial UI
+- **TanStack React Query** — Caching and dynamic background re-sync
+- **Lucide React** — Modern icon set
+- **Vercel Serverless Functions** — Serverless endpoints for live market feeds
+
+---
 
 ## 📦 Getting Started
 
 ### 1. Install dependencies
-
 ```bash
 npm install
 ```
 
-### 2. Set up environment variables
-
-Create a `.env.local` file (already done if you cloned this):
-
-```env
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
-```
-
-### 3. Run locally
-
+### 2. Run locally
 ```bash
 npm run dev
 ```
 
-### 4. Build for production
-
+### 3. Build for production
 ```bash
 npm run build
 ```
 
-## 🗄️ Supabase Table Schema
+---
 
-```sql
-create table ipos (
-  id uuid default gen_random_uuid() primary key,
-  name text not null,
-  symbol text,
-  issue_price numeric not null,
-  listing_price numeric,
-  current_price numeric,
-  listing_date date,
-  lot_size integer,
-  min_investment numeric,
-  sector text,
-  exchange text,
-  updated_at timestamptz default now()
-);
-```
+## 🌐 Deploy to Vercel (1-Click)
 
-## 🌐 Deploy on Vercel
-
-1. Push to GitHub
-2. Connect repo on [vercel.com](https://vercel.com)
-3. Add environment variables in Vercel dashboard:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_PUBLISHABLE_KEY`
-4. Deploy!
-
-## 📄 Disclaimer
-
-For educational purposes only. Not financial advice. Data may be delayed or inaccurate.
+1. Go to **[vercel.com/new](https://vercel.com/new)**.
+2. Import your GitHub repository: `https://github.com/Naveen0735/WhatifIPO`.
+3. Click **Deploy** — zero environment variables needed!
