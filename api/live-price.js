@@ -92,7 +92,13 @@ export default async function handler(req, res) {
     return res.status(200).end()
   }
 
-  const { symbol } = req.query || {}
+  let symbol = req.query?.symbol
+  if (!symbol && req.url) {
+    try {
+      const parsedUrl = new URL(req.url, 'http://localhost')
+      symbol = parsedUrl.searchParams.get('symbol')
+    } catch {}
+  }
 
   if (!symbol) {
     return res.status(400).json({ error: 'Missing symbol parameter' })
