@@ -4,6 +4,12 @@
  */
 export const FALLBACK_IPOS = [
   // ==========================================
+  // 2026 Listings
+  // ==========================================
+  { id: 250, name: 'Fusion CX Limited', symbol: 'FUSIONCX', issue_price: 289, listing_price: 305.00, current_price: 312.00, listing_date: '2026-10-22', lot_size: 51, min_investment: 14739, sector: 'Technology', exchange: 'NSE / BSE' },
+  { id: 251, name: 'Moneyview Ltd.', symbol: 'MONEYVIEW', issue_price: 34, listing_price: 54.33, current_price: 52.61, listing_date: '2026-10-01', lot_size: 441, min_investment: 14994, sector: 'Finance', exchange: 'NSE / BSE' },
+
+  // ==========================================
   // 2024 IPOs
   // ==========================================
   { id: 1, name: 'Swiggy', symbol: 'SWIGGY', issue_price: 390, listing_price: 420.00, current_price: 465.00, listing_date: '2024-11-13', lot_size: 38, min_investment: 14820, sector: 'Consumer', exchange: 'NSE' },

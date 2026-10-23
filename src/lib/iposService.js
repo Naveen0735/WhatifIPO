@@ -9,22 +9,6 @@ import { FALLBACK_IPOS } from '../data/fallbackIpos.js'
 // Master pipeline of verified upcoming & active IPOs
 export const UPCOMING_PIPELINE = [
   {
-    id: 'up-moneyview',
-    name: 'Money View (Whizdm Innovations)',
-    symbol: 'MONEYVIEW',
-    sector: 'Finance',
-    exchange: 'NSE / BSE',
-    issue_price: 320,
-    priceBandMin: 290,
-    priceBandMax: 320,
-    lot_size: 46,
-    min_investment: 14720,
-    status: 'upcoming',
-    isUpcoming: true,
-    dateNotice: 'Preparing DRHP for ₹1,500 Cr IPO (Dates TBA)',
-    description: 'Leading fintech unicorn providing personal credit, instant digital loans, and financial wellness tools to over 50M+ users across India.',
-  },
-  {
     id: 'up-groww',
     name: 'Groww (Billionbrains Garage Ventures)',
     symbol: 'GROWW',

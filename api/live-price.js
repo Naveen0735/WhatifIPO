@@ -2,6 +2,8 @@
 // Dynamically queries live internet market data whenever a customer searches / calculates a stock on the site.
 
 const SYMBOL_MAP = {
+  MONEYVIEW: 'MONEYVIEW.NS',
+  FUSIONCX: 'FUSIONCX.NS',
   ZOMATO: 'ETERNAL.NS',
   PAYTM: 'PAYTM.NS',
   NYKAA: 'NYKAA.NS',
