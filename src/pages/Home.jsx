@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { Calculator, TrendingUp, Search, Sparkles, Loader2, Radio } from 'lucide-react'
+import { useSearchParams, Link } from 'react-router-dom'
+import { Calculator, TrendingUp, Search, Sparkles, Loader2, Radio, Clock } from 'lucide-react'
 import confetti from 'canvas-confetti'
 import SearchBar from '../components/SearchBar'
 import ResultCard from '../components/ResultCard'
@@ -104,6 +104,11 @@ export default function Home() {
 
     if (!selectedIPO) {
       setError('Please search and select an IPO first.')
+      return
+    }
+
+    if (selectedIPO.isUpcoming) {
+      setError(`${selectedIPO.name} is an upcoming IPO and has not listed on the exchange yet. Calculator will unlock once listed. Check the upcoming filing details above.`)
       return
     }
 
@@ -213,8 +218,29 @@ export default function Home() {
               value={searchValue}
               onChange={setSearchValue}
               onSelect={handleIPOSelect}
-              placeholder="Search any IPO... (e.g. Zomato, DMart, Tata Tech, LIC)"
+              placeholder="Search any IPO... (e.g. Zomato, DMart, Tata Tech, Money View)"
             />
+            {selectedIPO?.isUpcoming && (
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 mt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wider bg-blue-600 text-white px-2 py-0.5 rounded-full">
+                      Upcoming IPO
+                    </span>
+                    <span className="text-xs text-blue-700 font-semibold">{selectedIPO.dateNotice || 'Dates TBA by SEBI'}</span>
+                  </div>
+                  <p className="text-xs text-blue-900 mt-1.5 leading-relaxed">
+                    <strong>{selectedIPO.name}</strong> is in the upcoming pipeline. Price Band: ₹{selectedIPO.priceBandMin || selectedIPO.issue_price} – ₹{selectedIPO.priceBandMax || selectedIPO.issue_price} · Lot Size: {selectedIPO.lot_size} shares.
+                  </p>
+                </div>
+                <Link
+                  to={`/upcoming`}
+                  className="inline-flex items-center justify-center text-xs font-bold px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition shadow-sm flex-shrink-0"
+                >
+                  View Details in Upcoming →
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Amount */}

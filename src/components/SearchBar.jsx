@@ -220,14 +220,23 @@ export default function SearchBar({ value, onChange, onSelect, placeholder }) {
                     </div>
                   </div>
 
-                  {pct !== null && (
+                  {ipo.isUpcoming ? (
                     <div className="text-right">
-                      <span className={`text-xs md:text-sm font-semibold flex items-center gap-0.5 justify-end ${getReturnColor(ipo)}`}>
-                        {Number(pct) >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                        {Number(pct) >= 0 ? '+' : ''}{pct}%
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                        Upcoming
                       </span>
-                      <span className="text-[10px] text-gray-400">Listing</span>
+                      <span className="block text-[10px] text-gray-400 mt-0.5">Pipeline</span>
                     </div>
+                  ) : (
+                    pct !== null && (
+                      <div className="text-right">
+                        <span className={`text-xs md:text-sm font-semibold flex items-center gap-0.5 justify-end ${getReturnColor(ipo)}`}>
+                          {Number(pct) >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                          {Number(pct) >= 0 ? '+' : ''}{pct}%
+                        </span>
+                        <span className="text-[10px] text-gray-400">Listing</span>
+                      </div>
+                    )
                   )}
                 </button>
               )
